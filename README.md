@@ -83,7 +83,7 @@ std::cout << x << " " << y;
 
   > Пример:
   
-  > Enter the number of sceonds: 31600000
+  > Enter the number of seсonds: 31600000
   
   > 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
 
