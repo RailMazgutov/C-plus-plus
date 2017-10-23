@@ -1,10 +1,10 @@
 # Содержание
-- [Урок1](https://github.com/RailMazgutov/C-plus-plus#Урок-1)
+- [Урок 1](https://github.com/RailMazgutov/C-plus-plus#Урок-1)
   - [Типы данных](https://github.com/RailMazgutov/C-plus-plus#Переменные)
   - [Объявление переменной](https://github.com/RailMazgutov/C-plus-plus#Объявление-переменной)
   - [Оператор sizeof](https://github.com/RailMazgutov/C-plus-plus#Оператор-sizeof)
   - [Задание 1](https://github.com/RailMazgutov/C-plus-plus#Задание-1)
-- [Урок2](https://github.com/RailMazgutov/C-plus-plus#Урок-2)
+- [Урок 2](https://github.com/RailMazgutov/C-plus-plus#Урок-2)
   - [По стилю кода](https://github.com/RailMazgutov/C-plus-plus#По-стилю-кода)
   - [Операторы](https://github.com/RailMazgutov/C-plus-plus#Операторы)
   - [Одномерные массивы](https://github.com/RailMazgutov/C-plus-plus#Одномерные-массивы)
@@ -12,10 +12,16 @@
   - [Условные оператор](https://github.com/RailMazgutov/C-plus-plus#Условный-оператор)
   - [Циклы](https://github.com/RailMazgutov/C-plus-plus#Циклы)
   - [Задание 2](https://github.com/RailMazgutov/C-plus-plus#Задание-2)
-- [Урок3](https://github.com/RailMazgutov/C-plus-plus#Урок-3)
+- [Урок 3](https://github.com/RailMazgutov/C-plus-plus#Урок-3)
   - [Функции](https://github.com/RailMazgutov/C-plus-plus#Функции)
   - [Указатели](https://github.com/RailMazgutov/C-plus-plus#Указатели)
   - [Задание 3](https://github.com/RailMazgutov/C-plus-plus#Задание-3)
+- [Урок 4](https://github.com/RailMazgutov/C-plus-plus#Урок-4)
+  - [Модель памяти C++](https://github.com/RailMazgutov/C-plus-plus#Модель-памяти-C++)
+  - [Особенности работы с указателями](https://github.com/RailMazgutov/C-plus-plus#Особенности-работы-с-указателями)
+  - [new и delete](https://github.com/RailMazgutov/C-plus-plus#new-и-delete)
+  - [Динамические массивы](https://github.com/RailMazgutov/C-plus-plus#Динамические-массивы)
+  - [Задание 4](https://github.com/RailMazgutov/C-plus-plus#Задание-4)
 
 # Урок 1.
 ## Типы данных
@@ -525,3 +531,10 @@ int findMaxElement(int array[], int size);
 3. Реализовать сортировку пузырьком в виде функции, получает указатель на массив и его размер.
 4. Реализовать функцию `int findMaxElement(int[] array, int size);`
 5. Реализовать функцию `void setAll(int[] array, int size, int value);` которая заменяет значения всех переменных переданного массива на значение переменной `value`.
+
+# Урок 4
+## Модель памяти C++
+## Особенности работы с указателями
+## new и delete
+## Динамические массивы
+## Задание 4
