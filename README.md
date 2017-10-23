@@ -12,6 +12,10 @@
   - [Условные оператор](https://github.com/RailMazgutov/C-plus-plus#Условный-оператор)
   - [Циклы](https://github.com/RailMazgutov/C-plus-plus#Циклы)
   - [Задание 2](https://github.com/RailMazgutov/C-plus-plus#Задание-2)
+- [Урок3](https://github.com/RailMazgutov/C-plus-plus#Урок-3)
+  - [Функции](https://github.com/RailMazgutov/C-plus-plus#Функции)
+  - [Указатели](https://github.com/RailMazgutov/C-plus-plus#Указатели)
+  - [Задание 3](https://github.com/RailMazgutov/C-plus-plus#Задание-3)
 
 # Урок 1.
 ## Типы данных
@@ -515,7 +519,7 @@ int findMaxElement(int* array, int size);
 ```
 int findMaxElement(int array[], int size);
 ```
-## Задание
+## Задание 3
 1. Реализовать функцию, принимающую на вход 3 целых числа, а возвращающее среднее среди них.
 2. Реализовать функцию которая меняет местами значения двух целых чисел. (Указатели)
 3. Реализовать сортировку пузырьком в виде функции, получает указатель на массив и его размер.
