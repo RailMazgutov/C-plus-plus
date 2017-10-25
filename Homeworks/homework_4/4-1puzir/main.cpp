@@ -5,18 +5,22 @@ void puzirek(int* array,int size);
 
 int main()
 {
-    std::cout << " enter 4 numbers " ;
-    int array[4];
-    for (int i = 0; i < 4; i++)
+    std::cout << " enter the number of elements in the array " ;
+    int size;
+    std::cin >> size;
+    std::cout << " enter " << size << " numbers of array " << std::endl;
+    int *array = new int[size];
+    for (int i = 0; i < size; i++)
     {
         std::cin >> array[i];
     }
-    puzirek(array,4);
+    puzirek(array,size);
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < size; i++)
     {
         std::cout << array[i];
     }
+    delete array;
 
     system("pause");
     return 0;
