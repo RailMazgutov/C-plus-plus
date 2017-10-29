@@ -69,16 +69,17 @@ void merge(int*arraya, int* arrayb, int* arrayresult, int sizea, int sizeb, int 
     for (int i = 0; i < size; i++)
     {
 
-        if ((c > sizea) || (d > sizeb))
+        if ((c == sizea) || (d == sizeb))
         {
-            if (c > sizea)
+            if (c == sizea)
             {
-                arrayresult[i] = arraya[d];
+                arrayresult[i] = arrayb[d];
                 d += 1;
+
             }
             else
             {
-                arrayresult[i] = arrayb[c];
+                arrayresult[i] = arraya[c];
                 c += 1;
             }
         }

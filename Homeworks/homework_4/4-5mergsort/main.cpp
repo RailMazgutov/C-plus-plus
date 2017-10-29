@@ -21,18 +21,8 @@ int main()
         std::cin >> array[i];
     }
 
-    int sizea;
-    int sizeb;
-    if (size % 2 == 0)
-    {
-         sizea = (size/2);
-         sizeb = sizea;
-    }
-    else
-    {
-        sizea = (size/2);
-        sizeb = sizea + 1;
-    }
+    int sizea = size/2;
+    int sizeb = (size/2)+(size % 2);
 
     int* arraya = new int[sizea];
     int* arrayb = new int[sizeb];
@@ -86,16 +76,16 @@ void merge(int*arraya, int* arrayb, int* arrayresult, int sizea, int sizeb, int 
     for (int i = 0; i < size; i++)
     {
 
-        if ((c > sizea) || (d > sizeb))
+        if ((c == sizea) || (d == sizeb))
         {
-            if (c > sizea)
+            if (c == sizea)
             {
-                arrayresult[i] = arraya[d];
+                arrayresult[i] = arrayb[d];
                 d += 1;
             }
             else
             {
-                arrayresult[i] = arrayb[c];
+                arrayresult[i] = arraya[c];
                 c += 1;
             }
         }
