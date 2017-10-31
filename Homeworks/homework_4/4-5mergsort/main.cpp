@@ -23,57 +23,46 @@ int main()
 
 merge(array, size);
 
-
-
-}
-
-void sorting(int* array, int size)
-{
-    for (int j = 0; j < size;++ j) // сортировка по возрастанию
+    for (int i = 0; i < size; ++i)
     {
-        for (int i = 0; i < (size - 1); ++i)
-        {
-            if (array[i]>array[i+1])
-            {
-                int a = array[i+1];
-                array[i+1] = array[i];
-                array[i] = a;
-            }
-        }
+        std::cout << array[i] << " "  ;
     }
-}
 
+}
 
 void merge(int* array, int size)
 {
+    if (size == 1)
+    {
+        return;
+    }
     int sizea = size/2;
-    int sizeb = (size/2)+(size % 2);
+    int sizeb = size - sizea;
     int* arraya = new int[sizea];
     int* arrayb = new int[sizeb];
 
     for (int i = 0; i < sizea; ++i)
     {
         arraya[i] = array[i];
-        std::cout << arraya[i] << " ";
-        std::cout << std::endl;
     }
-    for (int i = sizea; i < (sizea+sizeb); ++i)
+    for (int i = 0; i < sizea; ++i)
     {
-        arrayb[i] = array[i];
-        std::cout << arrayb[i] << " ";
-        std::cout << std::endl;
+       // std::cout << arraya[i] << " ";
     }
-    int* arrayresult = new int[size];
-    if ((sizea*sizeb) > 1)
+           // std::cout << std::endl;
+    for (int i = sizea; i < (size); ++i)
     {
+        arrayb[i-sizea] = array[i];
+    }
+    for (int i = 0; i < (sizeb); ++i)
+    {
+       // std::cout << arrayb[i] << " ";
+    }
+           // std::cout << std::endl;
         merge(arraya, sizea);
         merge(arrayb, sizeb);
-    }
-    else
-    {
      int c = 0;
      int d = 0;
-
         for (int i = 0; i < size; ++i)
         {
 
@@ -81,12 +70,12 @@ void merge(int* array, int size)
            {
               if (c == sizea)
               {
-                   arrayresult[i] = arrayb[d];
+                   array[i] = arrayb[d];
                   d += 1;
               }
               else
                 {
-                   arrayresult[i] = arraya[c];
+                   array[i] = arraya[c];
                    c += 1;
                 }
             }
@@ -95,25 +84,16 @@ void merge(int* array, int size)
 
              if (arraya[c] > arrayb[d])
                 {
-                   arrayresult[i] = arrayb[d];
+                   array[i] = arrayb[d];
                     d += 1;
                 }
              else
                 {
-                  arrayresult[i] = arraya[c];
+                  array[i] = arraya[c];
                   c += 1;
                 }
             }
         }
-        for (int i = 0; i < size; ++i)
-        {
-            std::cout << arrayresult[i] << " ";
-        }
-    }
-
-
-
-    delete[] arrayresult;
     delete[] arraya;
     delete[] arrayb;
 }
