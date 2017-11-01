@@ -2,6 +2,10 @@
 #include <cstdlib>
 
 
+void sorting(int* array,int size);
+void merge(int*arraya, int* arrayb, int* arrayresult, int sizea, int sizeb, int size);
+
+
 int main()
 {
     std::cout << " enter two numbers " ;
@@ -23,46 +27,59 @@ int main()
         std::cin >> arrayb[i];
     }
 
-    for (int j = 0; j < sizea; j++) // сортировка по возрастанию
-    {
-        for (int i = 0; i < (sizea - 1); i++)
-         if (arraya[i]>arraya[i+1])
-         {
-            int a = arraya[i+1];
-            arraya[i+1] = arraya[i];
-            arraya[i] = a;
-         }
-    }
-    for (int j = 0; j < sizeb; j++) // сортировка по возрастанию
-    {
-        for (int i = 0; i < (sizeb - 1); i++)
-         if (arrayb[i]>arrayb[i+1])
-         {
-            int b = arrayb[i+1];
-            arrayb[i+1] = arrayb[i];
-            arrayb[i] = b;
-         }
-    }
+    sorting(arraya, sizea);
+    sorting(arrayb, sizeb);
 
 
     int size = sizea + sizeb;
     int* arrayresult = new int[size];
 
+    merge(arraya,arrayb,arrayresult,sizea,sizeb,size);
+
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << arrayresult[i];
+    }
+    delete[] arrayresult;
+    delete[] arraya;
+    delete[] arrayb;
+}
+
+void sorting(int* array, int size)
+{
+    for (int j = 0; j < size; j++) // сортировка по возрастанию
+    {
+        for (int i = 0; i < (size - 1); i++)
+        {
+            if (array[i]>array[i+1])
+            {
+                int a = array[i+1];
+                array[i+1] = array[i];
+                array[i] = a;
+            }
+        }
+    }
+}
+
+
+void merge(int*arraya, int* arrayb, int* arrayresult, int sizea, int sizeb, int size)
+{
     int c = 0;
     int d = 0;
     for (int i = 0; i < size; i++)
     {
 
-        if ((c > sizea) || (d > sizeb))
+        if ((c == sizea) || (d == sizeb))
         {
-            if (c > sizea)
+            if (c == sizea)
             {
-                arrayresult[i] = arraya[d];
+                arrayresult[i] = arrayb[d];
                 d += 1;
+
             }
             else
             {
-                arrayresult[i] = arrayb[c];
+                arrayresult[i] = arraya[c];
                 c += 1;
             }
         }
@@ -81,12 +98,4 @@ int main()
             }
         }
     }
-
-    for (int i = 0; i < size; i++)
-    {
-        std::cout << arrayresult[i];
-    }
-
 }
-
-
