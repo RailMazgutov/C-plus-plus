@@ -17,33 +17,32 @@ int main()
 void input(int* array, int size)
 {
     std::cout << "enter the number " ;
-    int number;
-    std::cin >> number;
-    int* arraypom = new int[size];
-    for (int i = 0; i < size; ++i)
+    std::cin >> array[size];
+    while(array[size] >= 0)
     {
-        arraypom[i] = array[i];
-    }
-    size += 1;
-    int* arraynew = new int[size];
-    for (int i = 0; i < (size-1); ++i)
-    {
-        arraynew[i] = arraypom[i];
-    }
-    arraynew[size-1] = number;
-
-    if(number < 0)
-    {
-        sort(arraynew, size);
-        for (int i = 0; i < (size); ++i)
+        int* arraypom = new int[size+1];
+        for (int i = 0; i < (size+1); ++i)
         {
-            std::cout << arraynew[i];
+            arraypom[i] = array[i];
         }
-        return;
+        size += 1;
+        int* array = new int[size+1];
+        for (int i = 0; i < (size+1); ++i)
+        {
+            array[i] = arraypom[i];
+        }
+        std::cout << "enter the number " ;
+        std::cin >> array[size];
+        for (int i = 0; i < (size+1); ++i)
+        {
+            std::cout << array[i] << " ";
+        }
+
     }
-    input(arraynew, size);
-    delete[] arraynew;
-    delete[] arraypom;
+
+sort(array, size);
+
+
 
 }
 

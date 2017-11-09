@@ -9,7 +9,7 @@ int main()
     int number;
     std::cin >> number;
 
-    number = factorial(number+1);
+    number = factorial(number);
     std::cout << number << " ";
 
     system("pause");
@@ -23,8 +23,7 @@ int factorial(int number)
     {
         return number;
     }
-    number -= 1;
-    number = number * factorial(number);
-    return number;
+
+    return number = number * factorial(number-1) ;
 
 }
