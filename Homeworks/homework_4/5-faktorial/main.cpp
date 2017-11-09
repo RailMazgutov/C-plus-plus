@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void factorial (int number, int fact);
+int factorial (int number);
 
 int main()
 {
@@ -9,7 +9,7 @@ int main()
     int number;
     std::cin >> number;
 
-    factorial(number, number);
+    number = factorial(number+1);
     std::cout << number << " ";
 
     system("pause");
@@ -17,15 +17,14 @@ int main()
 }
 
 
-void factorial(int number, int fact)
+int factorial(int number)
 {
-    if (fact == 1)
+    if (number == 1)
     {
-        std::cout << number << " " << std::endl;
-        return;
+        return number;
     }
-    fact -= 1;
-    number = number*fact;
-    factorial(number,fact);
+    number -= 1;
+    number = number * factorial(number);
+    return number;
 
 }
