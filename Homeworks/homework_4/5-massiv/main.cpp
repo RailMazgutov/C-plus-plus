@@ -1,48 +1,47 @@
 #include <iostream>
 #include <cstdlib>
 
-void input(int* array, int size);
+void input(int* array);
 void sort(int* array, int size);
 
 int main()
 {
-    int array[1] = {0};
-    input(array, 0);
+    int *array;
+    input(array);
 
     system("pause");
     return 0;
 }
 
 
-void input(int* array, int size)
+void input(int* array)
 {
-    std::cout << "enter the number " ;
-    std::cin >> array[size];
-    while(array[size] >= 0)
+    int size = 0;
+    int num;
+    std::cin >> num;
+    while(num > 0)
     {
-        int* arraypom = new int[size+1];
-        for (int i = 0; i < (size+1); ++i)
+        size += 1;
+        int* array = new int[size+1];
+        int* arraypom = new int[size];
+        for (int i = 0; i < (size); ++i)
         {
             arraypom[i] = array[i];
         }
-        size += 1;
-        int* array = new int[size+1];
-        for (int i = 0; i < (size+1); ++i)
+
+        for (int i = 0; i < (size); ++i)
         {
             array[i] = arraypom[i];
         }
         std::cout << "enter the number " ;
-        std::cin >> array[size];
-        for (int i = 0; i < (size+1); ++i)
-        {
-            std::cout << array[i] << " ";
-        }
-
+        std::cin >> num;
+        array[size+1] = num;
+        delete[] arraypom;
     }
 
+
+
 sort(array, size);
-
-
 
 }
 
