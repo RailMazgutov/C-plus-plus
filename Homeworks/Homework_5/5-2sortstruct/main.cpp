@@ -8,16 +8,22 @@ struct Massiv
   int* array;
   int size;
 };
-Massiv input(int* array);
+Massiv input();
 
 int main()
 {
-    Massiv param = input(param.array);
+    Massiv param = input();
+    sort(param.array,param.size);
+    for (int i = 0; i < param.size; ++i)
+    {
+    std::cout << param.array[i];
+    }
 }
 
 
-    Massiv input(int* array)
+    Massiv input()
     {
+        int* array;
         int size = 0;
         std::cout << "enter the number " ;
         int num;
