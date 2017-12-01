@@ -12,6 +12,8 @@ struct Rect
 };
 
 int square ( Rect& rect1, Rect& rect2);
+int min(int a,int b);
+int max(int a,int b);
 
 int main()
 {
@@ -27,129 +29,36 @@ int main()
     return 0;
 }
 
+int square( Rect& rect1, Rect& rect2)
+{
+    int lenght = min(rect1.right,rect2.right) - max(rect1.left,rect2.left);
+    int width = min(rect1.top,rect2.top) - max(rect1.bottom,rect2.bottom);
+    int area;
+    return area = lenght*width;
+}
 
- int square( Rect& rect1, Rect& rect2)
- {
-     if (rect1.top > rect2.top)
-     {
-         if (rect1.bottom > rect2.bottom)
-         {
-             if (rect1.left > rect2.left)
-             {
-                 if (rect1.right > rect2.right)
-                 {
-                      int area = (rect2.top - rect1.bottom)*(rect2.right - rect1.left);
-                      return area;
-                 }
-                 else
-                 {
-                     int area = (rect2.top - rect1.bottom)*(rect1.right - rect1.left);
-                     return area;
-                 }
-             }
-             else
-             {
-                 if (rect1.right > rect2.right)
-                 {
-                      int area = (rect2.top - rect1.bottom)*(rect2.right - rect2.left);
-                      return area;
-                 }
-                 else
-                 {
-                     int area = (rect2.top - rect1.bottom)*(rect1.right - rect2.left);
-                     return area;
-                 }
-             }
-         }
-         else
-         {
-             if (rect1.left > rect2.left)
-             {
-                 if (rect1.right > rect2.right)
-                 {
-                      int area = (rect2.top - rect2.bottom)*(rect2.right - rect1.left);
-                      return area;
-                 }
-                 else
-                 {
-                     int area = (rect2.top - rect2.bottom)*(rect1.right - rect1.left);
-                     return area;
-                 }
-             }
-             else
-             {
-                 if (rect1.right > rect2.right)
-                 {
-                      int area = (rect2.top - rect2.bottom)*(rect2.right - rect2.left);
-                      return area;
-                 }
-                 else
-                 {
-                     int area = (rect2.top - rect2.bottom)*(rect1.right - rect2.left);
-                     return area;
-                 }
-             }
-         }
-     }
-     else
-     {
-         if (rect1.bottom > rect2.bottom)
-         {
-             if (rect1.left > rect2.left)
-             {
-                 if (rect1.right > rect2.right)
-                 {
-                      int area = (rect1.top - rect1.bottom)*(rect2.right - rect1.left);
-                      return area;
-                 }
-                 else
-                 {
-                     int area = (rect1.top - rect1.bottom)*(rect1.right - rect1.left);
-                     return area;
-                 }
-             }
-             else
-             {
-                 if (rect1.right > rect2.right)
-                 {
-                      int area = (rect1.top - rect1.bottom)*(rect2.right - rect2.left);
-                      return area;
-                 }
-                 else
-                 {
-                     int area = (rect1.top - rect1.bottom)*(rect1.right - rect2.left);
-                     return area;
-                 }
-             }
-         }
-         else
-         {
-             if (rect1.left > rect2.left)
-             {
-                 if (rect1.right > rect2.right)
-                 {
-                      int area = (rect1.top - rect2.bottom)*(rect2.right - rect1.left);
-                      return area;
-                 }
-                 else
-                 {
-                     int area = (rect1.top - rect2.bottom)*(rect1.right - rect1.left);
-                     return area;
-                 }
-             }
-             else
-             {
-                 if (rect1.right > rect2.right)
-                 {
-                      int area = (rect1.top - rect2.bottom)*(rect2.right - rect2.left);
-                      return area;
-                 }
-                 else
-                 {
-                     int area = (rect1.top - rect2.bottom)*(rect1.right - rect2.left);
-                     return area;
-                 }
-             }
-         }
-     }
- }
+int min(int a,int b)
+{
+    if (a > b)
+    {
+        return b;
+    }
+    else
+    {
+        return a;
+    }
+
+}
+
+int max(int a,int b)
+{
+    if (a > b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+
+}
