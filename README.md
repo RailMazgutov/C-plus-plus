@@ -871,5 +871,140 @@ result: 6+i1
 Все круто, все просто, все шикарно. Пользуйся!
 Как видим это все не так уж и сложно. Но перегрузка очень важный инструмент в разработке программ, прочитай подробнее [тут](https://msdn.microsoft.com/ru-ru/library/5dhe1hce.aspx)!
 ## Перегрузка операторов
+Все это круто, но у нас до сих пор нет такого же поведения как у стандартных типов! Давай это изменим. И в этом нам помогут методы! Снова методы, снова функции! (В Python в некоторых такие методы назваются магическими, и порой действительно кажется что в этом есть магия.) Вся фишка в том, что операторы то же функции, _**ТАДАМ**_!!!
+Рассмотрим пример оператора +.
+```
+struct Complex
+{
+    // Поля класса
+    double real;
+    double img;
+    // Методы класса
+    Complex add(const Complex& complex) const;
+    Complex add(double num) const;
+    Complex operator+(const Complex& rhs) const; // Вот он наш магический метод
+    void output() const;
+};
+```
+Рассмотрим поближе `Complex operator+(const Complex& rhs) const;` имя метода `operator+`, это такое правило, пишем слово `operator`, а потом тот оператор, который хотим переопределить. И получаем функцию, которую и объявлем и определяем. Посмотрим на определение:
+```
+Complex Complex::operator+(const Complex& rhs) const
+{
+  Complex result;
+  result.real = real + complex.real;
+  result.img = img + complex.img;
+  return result;
+}
+```
+Ты мог заметить, что теперь я называю передаваемый в метод аргумент `rhs`. Что это значит? почему так? Есть такое очень правильное правило, называть аргументы операторов вот таким способом: `lhs + rhs`, т.е. тот аргумент что слева `lhs`, тот что справа `rhs`. (от left hand side и right hand side).
+
+Рассмотрим еще как с этим работать:
+```
+int main()
+{
+  Complex complex1 {0, 1};
+  Complex complex2 {1, 0};
+  Complex complex3 = complex1 + complex2; // ЕЕЕЕЕ мы так долго к этому шли!!!
+  std::cout << "result: ";
+  complex3.output();
+}
+```
+И вывод:
+```
+result: 1+i1
+```
+Но как все это работает?? Все просто, на самом деле, неявным образом вызывается метод определённый нами, на самом деле, код выглядит вот так:
+```
+Complex complex3 = complex1.operator+(complex2);
+```
+Но за нас это делает компилятор, и мы этого не видим, и это супер мега ультра круто!
+Так но сейчас у нас не получится сложить комплексное число с действительным таким же образом, в дело вступает перегрузка:
+```
+struct Complex
+{
+    // Поля класса
+    double real;
+    double img;
+    // Методы класса
+    Complex add(const Complex& complex) const;
+    Complex add(double num) const;
+    Complex operator+(const Complex& rhs) const;
+    Complex operator+(double rhs) const;
+    void output() const;
+};
+
+Complex Complex::operator+(double num) const
+{
+  Complex result;
+  result.real = real + num;
+  result.img = img;
+  return result;
+}
+```
+
+Теперь все шикарно. Удлим не нужные методы (те что повторяют функционал магических операторов) и весь код тогда:
+```
+#include <iostream>
+using namespace std;
+
+struct Complex
+{
+    // Поля класса
+    double real;
+    double img;
+    // Методы класса
+    Complex operator+(const Complex& rhs) const;
+    Complex operator+(double rhs) const;
+    void output() const;
+};
+Complex Complex::operator+(const Complex& complex) const
+{
+  Complex result;
+  result.real = real + complex.real;
+  result.img = img + complex.img;
+  return result;
+}
+
+Complex Complex::operator+(double num) const
+{
+  Complex result;
+  result.real = real + num;
+  result.img = img;
+  return result;
+}
+
+void Complex::output() const
+{
+  if(img >= 0)
+  {
+    cout << real << "+i" << img << std::endl;
+  }
+  else
+  {
+    cout << real << "-i" << abs(img) << std::endl;
+  }
+}
+
+int main()
+{
+  Complex complex1 {0, 1};
+  Complex complex2 {1, 0};
+  Complex complex3 = complex1 + complex2;
+  std::cout << "result: ";
+  complex3.output();
+  complex3 = complex3 + 5;
+  std::cout << "result: ";
+  complex3.output();
+}
+```
+А вывод получи такой:
+```
+result: 1+i1
+result: 6+i1
+```
+### Самое важное
+- [Тут рассказано про все очень подробно](https://habrahabr.ru/post/308890/)
+- Операторы представляются как методы.
+- Методы можно переопределять, так же можно делать и с операторами.
 ## Строки
 ## Задание 5
