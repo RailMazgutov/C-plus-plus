@@ -734,14 +734,14 @@ struct Complex
 ```
 void Complex::output() const
 {
-  f(img >= 0)
-    {
+  if(img >= 0)
+  {
     cout << real << "+i" << img << std::endl;
-    }
-    else
-    {
+  }
+  else
+  {
     cout << real << "-i" << abs(img) << std::endl;
-    }
+  }
 }
 ```
 Картина должна проясниться окончательно, после изменения метода `Complex add(const Complex& complex);`:
@@ -830,6 +830,46 @@ int main()
 - Методы имеют непосредственный доступ к полям и методам объекта.
 - Используй const если метод не изменяет состояние объекта (всегда).
 ## Перегрузка методов
+Методы = функции внутри типа.
+Если можно переопределить функцию, значит можно и метод. Если мы хотим прибавить к нашему комплексному числу, число действительное, необязательно для этого создавать новый объект. Давай переопределим метод:
+```
+struct Complex
+{
+    // Поля класса
+    double real;
+    double img;
+    // Методы класса
+    Complex add(const Complex& complex) const;
+    Complex add(double num) const;
+    void output() const;
+};
+```
+Тогда определение метода:
+```
+Complex Complex::add(double num) const
+{
+  Complex result;
+  result.real = real + num;
+  result.img = img;
+  return result;
+}
+```
+А вызов вот так:
+```
+int main()
+{
+  Complex complex1 {0, 1};
+  Complex complex3 = complex1.add(6);
+  std::cout << "result: ";
+  complex3.output();
+}
+```
+Вывод будет таким:
+```
+result: 6+i1
+```
+Все круто, все просто, все шикарно. Пользуйся!
+Как видим это все не так уж и сложно. Но перегрузка очень важный инструмент в разработке программ, прочитай подробнее [тут](https://msdn.microsoft.com/ru-ru/library/5dhe1hce.aspx)!
 ## Перегрузка операторов
 ## Строки
 ## Задание 5
