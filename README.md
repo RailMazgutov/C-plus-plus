@@ -28,7 +28,7 @@
   - [Перегрузка операторов](https://github.com/RailMazgutov/C-plus-plus#Перегрузка-операторов)
   - [Строки](https://github.com/RailMazgutov/C-plus-plus#Строки)
   - [Задание 5](https://github.com/RailMazgutov/C-plus-plus#Задание-5)
-- [Урок 6](https://github.com/RailMazgutov/C-plus-plus#Урок-5)
+- [Урок 6](https://github.com/RailMazgutov/C-plus-plus#Урок-6)
   - [STL](https://github.com/RailMazgutov/C-plus-plus#STL)
   - [Контейнеры](https://github.com/RailMazgutov/C-plus-plus#Контейнеры)
   - [Классы](https://github.com/RailMazgutov/C-plus-plus#Классы)
