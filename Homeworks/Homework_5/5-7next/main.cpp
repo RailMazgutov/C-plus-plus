@@ -11,6 +11,7 @@ struct Node
   //  bool hasnext() const;
     Node reverse();
     int count();
+    int count1();
     void print();
 };
 
@@ -50,6 +51,17 @@ int Node::count()
     return size;
 }
 
+int Node::count1()
+{
+    int size = 1;
+    while(next)
+    {
+        size += 1;
+        next = next->next;
+    }
+    return size;
+}
+
 /*bool Node::hasnext(const Node &value) const
 {
     return !(next);
@@ -73,12 +85,12 @@ int main()
     std::cin >> value;
     Node* derevo = new Node;
     derevo->value_ = value;
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 3; ++i)
     {
         std::cin >> value;
         derevo->add(value);
     }
-    int size = derevo->count();
+    int size = derevo->count1();
     std::cout << "the number of elements in the list = " << size << std::endl;;
    // derevo->print();
     std::cout << "program complete" ;
