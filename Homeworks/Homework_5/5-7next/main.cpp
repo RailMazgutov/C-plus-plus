@@ -54,10 +54,11 @@ int Node::count()
 int Node::count1()
 {
     int size = 1;
-    while(next)
+    Node* counter = next;
+    while(counter)
     {
         size += 1;
-        next = next->next;
+        counter = next->next;
     }
     return size;
 }
@@ -91,7 +92,9 @@ int main()
         derevo->add(value);
     }
     int size = derevo->count1();
-    std::cout << "the number of elements in the list = " << size << std::endl;;
+    std::cout << "the number of elements in the list = " << size << std::endl;
+    //size = derevo->count1();
+   // std::cout << "the number of elements in the list = " << size << std::endl;
    // derevo->print();
     std::cout << "program complete" ;
     return 0;
