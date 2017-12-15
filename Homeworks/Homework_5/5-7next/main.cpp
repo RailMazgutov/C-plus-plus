@@ -10,7 +10,7 @@ struct Node
     void add(std::string value);
   //  bool hasnext() const;
     Node reverse();
-    int count(int size);
+    int count();
     void print();
 };
 
@@ -40,18 +40,14 @@ void Node::add(string value)
     return next->next;
 }*/
 
-int Node::count(int size)
+int Node::count()
 {
+    int size = 1;
     if (next)
     {
-        size = size + 1;
-        next->count(size);
-       // std::cout << "1";
+        size = size + next->count();
     }
-    else
-    {
-        return size;
-    }
+    return size;
 }
 
 /*bool Node::hasnext(const Node &value) const
@@ -82,9 +78,8 @@ int main()
         std::cin >> value;
         derevo->add(value);
     }
-    int size = 1;
-    int saize = derevo->count(size);
-    std::cout << "the number of elements in the list = " << saize << std::endl;;
+    int size = derevo->count();
+    std::cout << "the number of elements in the list = " << size << std::endl;;
    // derevo->print();
     std::cout << "program complete" ;
     return 0;
