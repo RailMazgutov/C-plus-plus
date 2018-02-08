@@ -9,8 +9,9 @@ struct Node
     Node* prev{nullptr};
     std::string value_;
     void add(std::string value);
-    int count();
-    int count1();
+    bool hasNext();
+    Node* reverse();
+    Node* reverse1();
     void print();
     void print1();
 };
@@ -30,17 +31,55 @@ void Node::add(string value)
 
 }
 
+bool Node::hasNext()
+{
+    if (next)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
+Node *Node::reverse()
+{
+    Node* pom = new Node;
+    pom = next;
+    next = prev;
+    prev = pom;
+    if (prev)
+    {
+       return prev->reverse();
+    }
+    else
+    {
+        return this;
+    }
+}
+
+Node *Node::reverse1()
+{
+    while (next)
+    {
+        Node* pom = new Node;
+        pom = next;
+        next = prev;
+        prev = pom;
+    }
+}
 
 
 void Node::print()
 {
     std::cout << value_ << " ";
-    if (next->next)
+    if (next)
     {
-        next->next->print1();
+        next->print();
     }
 }
+
 
 void Node::print1()
 {
@@ -64,7 +103,7 @@ int main()
         std::cin >> value;
         derevo->add(value);
     }
-    //derevo = derevo->reverse1();
+    derevo = derevo->reverse();
     derevo->print();
     std::cout << "program complete" ;
     return 0;
